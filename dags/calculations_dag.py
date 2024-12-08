@@ -28,7 +28,7 @@ def divide(**kwargs):
     y = kwargs['y']
     return x / y
 
-with DAG('calculations', default_args=default_args, schedule_interval='*/5 * * * *', catchup=False) as dag:
+with DAG('calculations', default_args=default_args, schedule_interval='*/15 * * * *', catchup=False) as dag:
 
     t1 = PythonOperator(task_id='add', python_callable=add,
                         op_kwargs={'x': 20, 'y': 30 })
