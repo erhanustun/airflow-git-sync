@@ -2,7 +2,7 @@ from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.operators.bash import BashOperator
 
-start_date = datetime(2022, 10, 11)
+start_date = datetime(2021, 10, 11)
 
 default_args = {
     'owner': 'airflow',
