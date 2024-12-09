@@ -25,11 +25,3 @@ with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once
     ssh_conn_id='spark_ssh_conn')
 
 
-with DAG('s3_to_postgres_dag', default_args=default_args, schedule_interval='@once', catchup=False) as dag:
-    t1 = SSHOperator(
-    task_id="df_to_s3",
-    command=f"""source /dataops/airflowenv/bin/activate && 
-    python /dataops/load_df_to_s3.py -ep {endpoint_url} -aki {aws_access_key_id} -sak {aws_secret_access_key} -sfu {source_file_url}""",
-    ssh_conn_id='spark_ssh_conn')
-
-
