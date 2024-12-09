@@ -8,9 +8,6 @@ from botocore.config import Config
 import pandas as pd
 import io
 
-from pyspark.sql import SparkSession, functions as F
-from pyspark.sql.types import *
-
 start_date = datetime(2023, 10, 11)
 
 default_args = {
