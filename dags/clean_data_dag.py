@@ -23,8 +23,7 @@ default_args = {
 with DAG('s3_to_postgres_dag', default_args=default_args, schedule_interval='@once', catchup=False) as dag:
     t1 = SSHOperator(
     task_id="dirty_data_clean",
-    command=f"""source /dataops/airflowenv/bin/activate && 
-    python /dataops/dirty_data_clean.py""",
+    command=f"""python /dataops/dirty_data_clean.py""",
     ssh_conn_id='spark_ssh_conn')
 
     t1
