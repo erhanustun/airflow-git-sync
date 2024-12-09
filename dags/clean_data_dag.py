@@ -9,7 +9,7 @@ import pandas as pd
 import io
 from datetime import timedelta
 
-start_date = datetime(2023, 10, 11)
+start_date = datetime(2024, 10, 11)
 
 default_args = {
     'owner': 'airflow',
