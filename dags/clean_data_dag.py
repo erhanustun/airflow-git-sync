@@ -23,4 +23,3 @@ with DAG('s3_to_postgres_dag', default_args=default_args, schedule_interval='@on
     command=f"""python /dataops/dirty_data_clean.py""",
     ssh_conn_id='spark_ssh_conn')
 
-    t1
