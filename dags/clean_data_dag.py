@@ -23,7 +23,7 @@ with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once
     task_id="dirty_data_clean",
     command=f"""source /dataops/airflowenv/bin/activate && 
             python /dataops/dirty_data_clean.py""",
-    execution_timeout=timedelta(seconds=600),  # Set the execution timeout to 10 minutes (600 seconds)
+     execution_timeout=timedelta(minutes=20),  # Set the execution timeout to 10 minutes (600 seconds)
     retries=3,
     ssh_conn_id='spark_ssh_conn')
 
