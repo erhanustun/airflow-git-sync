@@ -8,6 +8,7 @@ from botocore.config import Config
 import pandas as pd
 import io
 from datetime import timedelta
+from airflow.operators.bash import BashOperator
 
 start_date = datetime(2024, 10, 11)
 
@@ -34,7 +35,7 @@ with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once
     )
 
     t1 >> t2
-    
+
     
 
 
