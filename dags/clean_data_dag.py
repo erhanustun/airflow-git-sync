@@ -29,7 +29,7 @@ with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once
     
     t2 = SSHOperator(
         task_id='run_python', 
-        command=f"python /home/ssh_train/python_scripts/airflow-git-sync/clean_data_dag.py",
+        command=f"python /home/ssh_train/python_scripts/airflow-git-sync/dirty_data_clean.py",
         ssh_conn_id='spark_ssh_conn',
         cmd_timeout=600
     )
