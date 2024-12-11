@@ -24,12 +24,12 @@ ssh_train_password = Variable.get("ssh_train_password")
 with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once', catchup=False) as dag:
     t1 = BashOperator(
         task_id="scp_python_scripts",
-        bash_command=f"sshpass -v -p {ssh_train_password} scp -o StrictHostKeyChecking=no -r /opt/airflow/dags/airflow-git-sync ssh_train@spark_client:/home/ssh_train/python_scripts/"
+        bash_command=f"sshpass -v -p {ssh_train_password} scp -o StrictHostKeyChecking=no -r /opt/airflow/dags/airflow-git-sync ssh_train@spark_client:/home/ssh_train/python_scripts/airflow-git-sync"
     )
     
     t2 = SSHOperator(
         task_id='run_python', 
-        command=f"python /home/ssh_train/python_scripts/clean_data_dag.py",
+        command=f"python /home/ssh_train/python_scripts/airflow-git-sync/clean_data_dag.py",
         ssh_conn_id='spark_ssh_conn',
         cmd_timeout=600
     )
