@@ -19,6 +19,9 @@ default_args = {
     'retry_delay': timedelta(seconds=5)
 }
 
+ssh_train_password = Variable.get("ssh_train_password")
+SQLALCHEMY_DATABASE_URL = Variable.get("SQLALCHEMY_DATABASE_URL")
+
 with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once', catchup=False) as dag:
     t1 = BashOperator(
     task_id="scp_python_scrips",
