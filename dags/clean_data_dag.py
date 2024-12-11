@@ -19,11 +19,10 @@ default_args = {
 }
 
 ssh_train_password = Variable.get("ssh_train_password")
-SQLALCHEMY_DATABASE_URL = Variable.get("SQLALCHEMY_DATABASE_URL")
 
 with DAG('dirty_data_clean', default_args=default_args, schedule_interval='@once', catchup=False) as dag:
     t1 = BashOperator(
-    task_id="scp_python_scrips",
+    task_id="scp_python_scripts",
     bash_command=f"sshpass -v -p {ssh_train_password} scp -o StrictHostKeyChecking=no -r 
     /opt/airflow/dags/airflow-git-sync ssh_train@spark_client:/home/ssh_train/python_scripts/")
     
